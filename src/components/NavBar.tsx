@@ -12,18 +12,19 @@ export default function NavBar() {
     <Box>
       <AppBar position="static" color="transparent">
         <Toolbar>
+          
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            tsks.
+          </Typography>
           <IconButton
             size="large"
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2, display: { xs: 'block', sm: 'none' } }}
+            sx={{display: { xs: 'block', sm: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Tsks
-          </Typography>
           <Stack
             direction="row"
             spacing={2}

@@ -6,6 +6,12 @@ const darkTheme = createTheme({
   palette: {
     mode: 'dark',
   },
+  typography: {
+    fontFamily: [
+      'Fredoka One',
+    ].join(','),
+  
+  }
 });
 
 function App() {
