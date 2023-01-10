@@ -4,7 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 export default function NavBar() {
   return (
     <Box>
-      <AppBar position="static" color="transparent">
+      <AppBar position="fixed" color="transparent">
         <Toolbar>
           
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
