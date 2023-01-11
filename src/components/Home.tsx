@@ -1,15 +1,18 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { sizing } from '@mui/system';
+import LearnMore from "./LearnMore";
 
 export default function Home() {
     return (
-        <Box 
+        <Box sx={{
+            m: 3
+        }}>
+            <Box 
             sx={{
-                m: 3,
-                height: '80vh',
+                height: '100vh',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
 
             }}>
                 <Stack 
@@ -33,7 +36,7 @@ export default function Home() {
                             xs: 'column', sm: 'row'
                         },
                         gap: {
-                            xs: 2, sm: 4
+                            xs: 1.5, sm: 4
                         }
                     }}>
                         <Button variant="contained" sx={{
@@ -49,5 +52,7 @@ export default function Home() {
                     </Stack>
                 </Stack>
             </Box>
+            <LearnMore />
+        </Box>
     );
 }
