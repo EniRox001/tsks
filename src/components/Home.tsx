@@ -6,7 +6,7 @@ import LearnMore from "./LearnMore";
 export default function Home() {
     return (
         <Box sx={{
-            mx: 3
+            mx: 4
         }}>
             <Box 
             sx={{
