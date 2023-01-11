@@ -1,5 +1,6 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { sizing } from '@mui/system';
+import CTA from "./CTA";
 import LearnMore from "./LearnMore";
 
 export default function Home() {
@@ -53,6 +54,7 @@ export default function Home() {
                 </Stack>
             </Box>
             <LearnMore />
+            <CTA />
         </Box>
     );
 }

@@ -3,7 +3,6 @@ import { Box, Card, CardContent, Grid, Stack, Typography } from "@mui/material";
  export default function LearnMore() {
     return (
         <Box sx={{
-            // height: '100vh',
             mb: 15
         }}>
             <Typography
