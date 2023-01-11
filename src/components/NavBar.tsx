@@ -1,5 +1,6 @@
 import { AppBar, Box, Toolbar, Typography, Button, IconButton, Stack } from '@mui/material/';
 import MenuIcon from '@mui/icons-material/Menu';
+import SignupButton from './Dialog';
 
 export default function NavBar() {
   return (
@@ -25,14 +26,7 @@ export default function NavBar() {
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
             <Button variant="text">Login</Button>
-            <Button
-              variant="outlined"
-              onClick={() => {
-                alert('sign up');
-              }}
-            >
-              Sign up
-            </Button>
+            <SignupButton />
           </Stack>
         </Toolbar>
       </AppBar>
