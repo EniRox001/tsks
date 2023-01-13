@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button } from '@mui/material/';
-import SignupDialog from '../functions/SignUpDialog';
+import SignupDialog from '../Functions/SignUpDialog';
 
 export default function SignupButton() {
   const [open, setOpen] = useState(false);
