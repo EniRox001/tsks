@@ -1,12 +1,11 @@
-import { useState } from 'react';
-import { Dialog, DialogTitle, Button, Typography, DialogContent, TextField, Stack, DialogActions } from '@mui/material/';
+import { Dialog, DialogTitle, Button, Typography, DialogContent, TextField, Stack, DialogActions, Link } from '@mui/material/';
 
 export interface SignupDialogProps {
   open: boolean;
   onClose: () => void;
 }
 
-function SignupDialog(props: SignupDialogProps) {
+export default function SignupDialog(props: SignupDialogProps) {
   const { onClose, open } = props;
 
   const handleClose = () => {
@@ -27,34 +26,16 @@ function SignupDialog(props: SignupDialogProps) {
             <Button variant='outlined' sx={{
                 p: 2
             }}>Sign up</Button>
+            <Stack direction='row' spacing={1}>
+                <Typography>Already have an account?</Typography>
+                <Link 
+                    href="#"
+                    underline='none'
+                    >Sign in
+                </Link>
+            </Stack>
         </Stack>
       </DialogContent>
     </Dialog>
-  );
-}
-
-export default function SignupButton() {
-  const [open, setOpen] = useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  return (
-    <>
-        <Button
-            variant="outlined"
-            onClick={handleClickOpen}>
-            Sign up
-        </Button>
-        <SignupDialog
-        open={open}
-        onClose={handleClose}
-      />
-    </>
   );
 }

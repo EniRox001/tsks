@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Button } from '@mui/material/';
-import LoginDialog from './functions/LoginDialog';
+import SignupDialog from './functions/SignUpDialog';
 
-export default function LoginButton() {
+export default function SignupButton() {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -16,11 +16,11 @@ export default function LoginButton() {
   return (
     <>
         <Button
-            variant="text"
+            variant="outlined"
             onClick={handleClickOpen}>
-            Login
+            Sign up
         </Button>
-        <LoginDialog
+        <SignupDialog
         open={open}
         onClose={handleClose}
       />
