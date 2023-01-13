@@ -1,6 +1,7 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { sizing } from '@mui/system';
 import CTA from "./CTA";
+import GetStartedButton from "./GetStartedButton";
 import LearnMore from "./LearnMore";
 
 export default function Home() {
@@ -40,11 +41,7 @@ export default function Home() {
                             xs: 1.5, sm: 4
                         }
                     }}>
-                        <Button variant="contained" sx={{
-                            width: {
-                                xs: '80vw', sm: 'inherit'
-                            },
-                        }}>Get Started</Button>
+                        <GetStartedButton />
                         <Button variant="outlined" sx={{
                             width: {
                                 xs: '80vw', sm: 'inherit'

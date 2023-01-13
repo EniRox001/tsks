@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
-import { RocketLaunch } from "@mui/icons-material";
+import LetsGoButton from "./LetsGoButton";
 
 export default function CTA() {
     return (
@@ -17,11 +17,7 @@ export default function CTA() {
                 sx={{
                     textAlign: 'center'
                 }}>Get Started Organizing Your Life Today</Typography>
-            <Button 
-                size="large" 
-                variant="outlined" 
-                startIcon={<RocketLaunch 
-                 />}>Let's Go</Button>
+            <LetsGoButton />
         </Box>
     )
 }
