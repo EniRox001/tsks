@@ -1,6 +1,7 @@
 import { AppBar, Box, Toolbar, Typography, Button, IconButton, Stack } from '@mui/material/';
 import MenuIcon from '@mui/icons-material/Menu';
 import SignupButton from './SignUpDialog';
+import LoginButton from './LoginDialog';
 
 export default function NavBar() {
   return (
@@ -25,7 +26,7 @@ export default function NavBar() {
             spacing={2}
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            <Button variant="text">Login</Button>
+            <LoginButton />
             <SignupButton />
           </Stack>
         </Toolbar>
