@@ -53,7 +53,7 @@ export default function LoginButton() {
   return (
     <>
         <Button
-            variant="outlined"
+            variant="text"
             onClick={handleClickOpen}>
             Login
         </Button>
