@@ -1,7 +1,8 @@
 import { AppBar, Box, Toolbar, Typography, Button, IconButton, Stack } from '@mui/material/';
 import MenuIcon from '@mui/icons-material/Menu';
-import SignupButton from './SignupButton';
-import LoginButton from './LoginButton';
+import LoginButton from './Buttons/LoginButton';
+import SignupButton from './Buttons/SignupButton';
+
 
 export default function NavBar() {
   return (

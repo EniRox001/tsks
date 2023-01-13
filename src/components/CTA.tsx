@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from "@mui/material";
-import LetsGoButton from "./LetsGoButton";
+import LetsGoButton from "./Buttons/LetsGoButton";
 
 export default function CTA() {
     return (
