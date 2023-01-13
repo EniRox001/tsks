@@ -1,4 +1,5 @@
-import { Dialog, DialogTitle, Button, Typography, DialogContent, TextField, Stack, DialogActions, Link } from '@mui/material/';
+import { Dialog, DialogTitle, Button, Typography, DialogContent, TextField, Stack, IconButton, Link } from '@mui/material/';
+import { Close } from '@mui/icons-material';
 
 export interface SignupDialogProps {
   open: boolean;
@@ -14,6 +15,11 @@ export default function SignupDialog(props: SignupDialogProps) {
 
   return (
     <Dialog onClose={handleClose} open={open} fullWidth={true}>
+      <Stack direction="row" justifyContent='flex-end'>
+        <IconButton aria-label="close" onClick={handleClose} sx={{mx : 2, my : 1}}>
+          <Close />
+        </IconButton>
+      </Stack>
       <DialogTitle>
         <Typography variant="h4">Enter Details to Sign up</Typography>
       </DialogTitle>
