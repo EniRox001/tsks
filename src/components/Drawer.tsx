@@ -1,5 +1,5 @@
-import { IconButton, Drawer, Typography, Box, Divider, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
-import MenuIcon from '@mui/icons-material/Menu';
+import { IconButton, Dialog, Typography, Box, Divider, List, ListItem, ListItemButton, ListItemText, Stack } from "@mui/material";
+import { Menu, Close} from '@mui/icons-material';
 import { useState } from "react";
 
 export default function DrawerButton() {
@@ -23,19 +23,26 @@ export default function DrawerButton() {
                 color="inherit"
                 sx={{display: { xs: 'block', sm: 'none' } }}
             > 
-                <MenuIcon />
+                <Menu />
             </IconButton>
-            <Drawer 
-                anchor="left"
+            <Dialog
+                fullScreen
                 open={open}
                 onClose={handleClose}
+                style={{ backgroundColor: 'transparent' }}
                 PaperProps={{
-                    sx: {
-                        width: 250,
-                        backgroundColor: 'black'
-                    }
-                }}>
+                    style: {
+                      backgroundColor: "black",
+                      boxShadow: "none"
+                    },
+                  }}
+                >
                     <Box>
+                        <Stack direction="row" justifyContent='flex-end'>
+                            <IconButton aria-label="close" onClick={handleClose} sx={{mx : 2, my : 1}}>
+                                <Close />
+                            </IconButton>
+                        </Stack>
                         <Typography variant='h4' sx={{ textAlign: 'center', m: 4 }}>tsks.</Typography>
                         <Divider />
                         <List>
@@ -51,7 +58,7 @@ export default function DrawerButton() {
                             </ListItem>
                         </List>
                     </Box>
-            </Drawer>
+            </Dialog>
         </>
     )
 }
