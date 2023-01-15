@@ -1,6 +1,8 @@
-import { IconButton, Dialog, Typography, Box, Divider, List, ListItem, ListItemButton, ListItemText, Stack } from "@mui/material";
+import { IconButton, Dialog, Typography, Box, Divider, List, ListItem, ListItemButton, ListItemText, Stack, Link } from "@mui/material";
 import { Menu, Close} from '@mui/icons-material';
 import { useState } from "react";
+import NavLoginButton from "./Buttons/NavLoginButton";
+import NavSignupButton from "./Buttons/NavSignupButton";
 
 export default function DrawerButton() {
     const [open, setOpen] = useState(false);
@@ -47,13 +49,13 @@ export default function DrawerButton() {
                         <Divider />
                         <List>
                             <ListItem key="Login" disablePadding>
-                                <ListItemButton sx={{textAlign: 'center'}}>
-                                    <ListItemText primary='Login' />
+                                <ListItemButton sx={{ display: 'flex', justifyContent: 'center'}}>
+                                    <NavLoginButton />
                                 </ListItemButton>
                             </ListItem>
                             <ListItem key="Login" disablePadding>
-                                <ListItemButton sx={{textAlign: 'center'}}>
-                                    <ListItemText primary='Sign up' />
+                                <ListItemButton sx={{ display: 'flex', justifyContent: 'center'}}>
+                                    <NavSignupButton />
                                 </ListItemButton>
                             </ListItem>
                         </List>
