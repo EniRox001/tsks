@@ -16,7 +16,7 @@ export default function SignupDialog(props: SignupDialogProps) {
 
   const [loading, setLoading] = useState(false);
   const [snackbar, setSnackbar] = useState(false);
-  const [snackbarText, setSnackbarText] = useState('sn');
+  const [snackbarText, setSnackbarText] = useState('');
   const [userData, setUserData] = useState({
     firstName: '',
     lastName: '',
