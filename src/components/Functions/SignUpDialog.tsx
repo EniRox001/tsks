@@ -1,6 +1,9 @@
-import { Dialog, DialogTitle, Button, Typography, DialogContent, TextField, Stack, IconButton, Link } from '@mui/material/';
+import { Dialog, DialogTitle, Button, Typography, DialogContent, TextField, Stack, IconButton, Link, Backdrop, CircularProgress, Snackbar } from '@mui/material/';
 import { Close } from '@mui/icons-material';
 import { ChangeEvent, useState } from 'react';
+
+import { collection, addDoc } from "firebase/firestore"; 
+import { db } from '../../firebase/firebase';
 
 export interface SignupDialogProps {
   open: boolean;
@@ -8,6 +11,12 @@ export interface SignupDialogProps {
 }
 
 export default function SignupDialog(props: SignupDialogProps) {
+
+  const { onClose, open } = props;
+
+  const [loading, setLoading] = useState(false);
+  const [snackbar, setSnackbar] = useState(false);
+  const [snackbarText, setSnackbarText] = useState('sn');
   const [userData, setUserData] = useState({
     firstName: '',
     lastName: '',
@@ -23,15 +32,65 @@ export default function SignupDialog(props: SignupDialogProps) {
     });
   };
 
-  const handleSubmit = () => {
-    //Perform server validation here
-  }
-
-  const { onClose, open } = props;
-
   const handleClose = () => {
     onClose();
   };
+
+  const setLoadingFalse = () => {
+    setLoading(false);
+  };
+  const handleLoadingToggle = () => {
+    setLoading(!loading);
+  };
+
+  const openSnackbar = () => {
+    setSnackbar(true);
+  }
+
+  const closeSnackbar = () => {
+    setSnackbar(false);
+  }
+  
+  const handleSubmit = () => {
+    handleLoadingToggle();
+    createUser().then(res => {
+      if (res == 'success') {
+        setSnackbarText('Signup Successful');
+        setLoadingFalse();
+        setTimeout(() => {handleClose();}, 3000)
+        //Add redirection to another page here
+      } else {
+        setSnackbarText('An error occured');
+      }
+      openSnackbar();
+    });
+  }
+
+  const createUser = async() => {
+    try {
+      const docRef = await addDoc(collection(db, "users"), {
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        username: userData.username,
+        password: userData.password
+      });
+      return 'success';
+    } catch (e) {
+      return 'error';
+    }
+  }
+
+  const snackbarButtonAction = (
+    <>
+      <IconButton
+        size='small'
+        aria-label='close'
+        color='inherit'
+        onClick={closeSnackbar}>
+          <Close fontSize='small'/>
+      </IconButton>
+    </>
+  )
 
   return (
     <Dialog onClose={handleClose} open={open} fullWidth={true}>
@@ -60,6 +119,20 @@ export default function SignupDialog(props: SignupDialogProps) {
             </Stack>
         </Stack>
       </DialogContent>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={loading}
+        onClick={setLoadingFalse}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      <Snackbar 
+        open={snackbar}
+        autoHideDuration={5000}
+        onClose={closeSnackbar}
+        message={snackbarText}
+        action={snackbarButtonAction}
+      />
     </Dialog>
   );
 }
