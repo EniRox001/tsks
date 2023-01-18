@@ -1,6 +1,8 @@
 import { Dialog, DialogTitle, Button, Typography, DialogContent, TextField, Stack, Link, IconButton } from '@mui/material/';
 import { Close } from '@mui/icons-material';
 import { ChangeEvent, useState } from 'react';
+import { db } from '../../firebase/firebase';
+import { doc, getDoc } from "firebase/firestore";
 
 export interface LoginDialogProps {
   open: boolean;
@@ -8,10 +10,16 @@ export interface LoginDialogProps {
 }
 
 export default function LoginDialog(props: LoginDialogProps) {
+
+    const { onClose, open } = props;
+
+    const [loading, setLoading] = useState(false);
+    const [snackbar, setSnackbar] = useState(false);
+    const [snackbarText, setSnackbarText] = useState('');
     const [userData, setUserData] = useState({
         username: '',
         password: ''
-    })
+    });
 
     const handleChange = ( e : ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -21,15 +29,37 @@ export default function LoginDialog(props: LoginDialogProps) {
         });
     };
 
+    const handleClose = () => {
+        onClose();
+    };
+    
+    const setLoadingFalse = () => {
+        setLoading(false);
+    };
+
+    const handleLoadingToggle = () => {
+        setLoading(!loading);
+    };
+    
+    const openSnackbar = () => {
+        setSnackbar(true);
+    }
+    
+    const closeSnackbar = () => {
+        setSnackbar(false);
+    }
+
     const handleSubmit = () => {
         //Create server function to add login functionality
     }
 
-    const { onClose, open } = props;
-
-    const handleClose = () => {
-        onClose();
-    };
+    // const loginUser = async() => {
+    //     const docRef = doc(db, "user", {
+    //         'username': userData.username,
+    //         'password': userData.password
+    //     });
+    //     const docSnap = await getDoc(docRef);
+    // }
 
     return (
         <Dialog onClose={handleClose} open={open} fullWidth={true}>
