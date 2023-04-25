@@ -1,8 +1,72 @@
-import { Box, Card, CardContent, Grid, Stack, Typography } from "@mui/material";
+import { RocketLaunch } from "@mui/icons-material";
+import { Box, Button, Stack, Typography, Card, CardContent, Grid } from "@mui/material";
+import NavBar from "../components/NavBar";
+import { useState } from "react";
 
- export default function LearnMore() {
+
+export default function Landing() {
+    const [dialog, setOpenDialog] = useState(false);
+    
+    const openDialog = () => {
+        setOpenDialog(true);
+    }
+
+    const closeDialog = () => {
+        setOpenDialog(false);
+    }
+
     return (
-        <Box sx={{
+        <>
+            <NavBar dialog={dialog} openDialog={openDialog} closeDialog={closeDialog}/>
+            <Box sx={{
+            mx: 4
+        }}>
+            <Box 
+            sx={{
+                height: '100vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+
+            }}>
+                <Stack 
+                    sx= {{
+                        display: 'flex',
+                        alignItems: 'center',
+                    }} 
+                    spacing={4}>
+                    <Typography variant="h2" sx={{
+                        textAlign: 'center'
+                    }}>Tsks, just tasks.</Typography>
+                    <Box sx={{
+                        width: 300,
+                        textAlign: 'justify',
+                    }}>
+                        <Typography variant="body1">Keep track of the daily tasks in life and get that satisfaction upon completion.</Typography>
+                    </Box>
+                    <Stack direction='row' sx={{
+                        display: 'flex',
+                        flexDirection: {
+                            xs: 'column', sm: 'row'
+                        },
+                        gap: {
+                            xs: 1.5, sm: 4
+                        }
+                    }}>
+                        <Button variant="contained" sx={{
+                            width: {
+                                xs: '80vw', sm: 'inherit'
+                            },
+                        }}>Get Started</Button>
+                        <Button variant="outlined" sx={{
+                            width: {
+                                xs: '80vw', sm: 'inherit'
+                            },
+                        }}>Learn More</Button>
+                    </Stack>
+                </Stack>
+            </Box>
+            <Box sx={{
             mb: 15
         }}>
             <Typography
@@ -89,5 +153,27 @@ import { Box, Card, CardContent, Grid, Stack, Typography } from "@mui/material";
                     </Grid>
                 </Grid>
         </Box>
+        <Box  sx={{
+            height: '100vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            gap: 3
+
+        }}>
+            <Typography 
+                variant="h5"
+                sx={{
+                    textAlign: 'center'
+                }}>Get Started Organizing Your Life Today</Typography>
+                <Button startIcon={<RocketLaunch />} variant="contained" sx={{
+                    width: {
+                        xs: '80vw', sm: 'inherit'
+                    },
+                }}>Get Started</Button>
+        </Box>
+        </Box>
+        </>
     )
 }
